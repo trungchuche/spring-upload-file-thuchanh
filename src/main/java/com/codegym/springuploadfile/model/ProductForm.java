@@ -7,15 +7,19 @@ public class ProductForm {
     private String name;
     private String description;
     private MultipartFile image;
+    private String author;
+    private String feedback;
 
     public ProductForm() {
     }
 
-    public ProductForm(int id, String name, String description, MultipartFile image) {
+    public ProductForm(int id, String name, String description, MultipartFile image, String author, String feedback) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.image = image;
+        this.author = author;
+        this.feedback = feedback;
     }
 
     public int getId() {
@@ -48,5 +52,21 @@ public class ProductForm {
 
     public void setImage(MultipartFile image) {
         this.image = image;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }

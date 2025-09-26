@@ -28,6 +28,14 @@
                 <td><input type="file" id="image" th:field="*{image}"/></td>
             </tr>
             <tr>
+                <td><label for="author">Author</label></td>
+                <td><input type="text" id="author" th:field="*{author}"/></td>
+            </tr>
+            <tr>
+                <td><label for="feedback">Feedback</label></td>
+                <td><textarea id="feedback" th:field="*{feedback}" rows="3" cols="30"></textarea></td>
+            </tr>
+            <tr>
                 <td></td>
                 <td><input type="submit" value="Save"/></td>
             </tr>

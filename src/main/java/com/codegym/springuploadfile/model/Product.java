@@ -5,15 +5,19 @@ public class Product {
     private String name;
     private String description;
     private String image;
+    private String author;
+    private String feedback;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String image) {
+    public Product(int id, String name, String description, String image, String author, String feedback) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.image = image;
+        this.author = author;
+        this.feedback = feedback;
     }
 
     public int getId() {
@@ -48,6 +52,22 @@ public class Product {
         this.image = image;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -55,6 +75,8 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
+                ", author='" + author + '\'' +
+                ", feedback='" + feedback + '\'' +
                 '}';
     }
 }

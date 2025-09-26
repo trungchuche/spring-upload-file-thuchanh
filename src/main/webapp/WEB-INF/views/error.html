@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lỗi Feedback</title>
+</head>
+<body>
+    <h2 style="color:red;" th:text="${message}"></h2>
+    <p><strong>Tác giả:</strong> <span th:text="${author}"></span></p>
+    <p><strong>Nội dung feedback:</strong> <span th:text="${feedback}"></span></p>
+    <a th:href="@{/product/create}">Quay lại trang tạo sản phẩm</a>
+</body>
+</html>

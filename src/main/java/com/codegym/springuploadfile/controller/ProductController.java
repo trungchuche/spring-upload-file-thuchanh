@@ -4,6 +4,7 @@ import com.codegym.springuploadfile.model.Product;
 import com.codegym.springuploadfile.model.ProductForm;
 import com.codegym.springuploadfile.service.IProductService;
 import com.codegym.springuploadfile.service.ProductService;
+import com.codegym.springuploadfile.util.BadWordFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +46,15 @@ public class ProductController {
 
     @PostMapping("/save")
     public ModelAndView saveProduct(@ModelAttribute ProductForm productForm){
+        String feedback = productForm.getFeedback();
+        String author = productForm.getAuthor();
+        if (BadWordFilter.containsBadWord(feedback)) {
+            ModelAndView errorView = new ModelAndView("/error");
+            errorView.addObject("message", "Feedback chứa từ ngữ không phù hợp!");
+            errorView.addObject("author", author);
+            errorView.addObject("feedback", feedback);
+            return errorView;
+        }
         MultipartFile multipartFile = productForm.getImage();
         String fileName = multipartFile.getOriginalFilename();
         try {
@@ -52,7 +62,7 @@ public class ProductController {
         }catch (IOException ex){
             ex.printStackTrace();
         }
-        Product product = new Product(productForm.getId(), productForm.getName(), productForm.getDescription(), fileName);
+        Product product = new Product(productForm.getId(), productForm.getName(), productForm.getDescription(), fileName, author, feedback);
         productService.save(product);
         ModelAndView modelAndView = new ModelAndView("/create");
         modelAndView.addObject("productForm", new ProductForm());
